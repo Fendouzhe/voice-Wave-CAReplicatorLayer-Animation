@@ -23,7 +23,7 @@
 {
     CGFloat circleMargin = 5.0;
     CGFloat width = self.bounds.size.width;
-    CGFloat circleWidth = (width - (circleMargin * xNum  - 1)) / xNum;
+    CGFloat circleWidth = (width - circleMargin * (xNum  - 1)) / xNum;//(width - (circleMargin * xNum  - 1)) / xNum;
     
     CAShapeLayer *circleShapeLayer = [CAShapeLayer layer];
     circleShapeLayer.bounds = CGRectMake(0, 0, circleWidth, circleWidth);
@@ -34,27 +34,36 @@
     CAReplicatorLayer *xReplicator = [CAReplicatorLayer layer];
     xReplicator.bounds = CGRectMake(0, 0, width, circleWidth);
     xReplicator.position = CGPointMake(width / 2.0, circleWidth / 2.0);
-    xReplicator.instanceDelay = 0.3;
-    xReplicator.instanceCount = xNum;
+    xReplicator.instanceDelay = 0.3;//延时0.3秒执行动画放大缩小，颜色渐变动画
+    xReplicator.instanceCount = xNum;//拷贝xNum个副本
 
     CATransform3D transform = CATransform3DIdentity;
+    //每个副本向右平移circleWidth + circleMargin
     transform = CATransform3DTranslate(transform, circleWidth + circleMargin, 0, 0.0);
     xReplicator.instanceTransform = transform;
-    transform = CATransform3DScale(transform, 1, -1, 0);
+    //transform = CATransform3DScale(transform, 1, -1, 0);
 
     CAReplicatorLayer *yReplicator = [CAReplicatorLayer layer];
     yReplicator.bounds = CGRectMake(0, 0, width, width);
     yReplicator.position = CGPointMake(width / 2.0, width / 2.0);
-    yReplicator.instanceDelay = 0.3;
-    yReplicator.instanceCount = yNum;
+    yReplicator.instanceDelay = 0.3;//延时0.3秒执行动画放大缩小，颜色渐变动画
+    yReplicator.instanceCount = yNum;//拷贝yNum个副本
 
     CATransform3D transformY = CATransform3DIdentity;
+    //每个副本向下平移circleWidth + circleMargin
     transformY = CATransform3DTranslate(transformY, 0, circleWidth + circleMargin, 0.0);
     yReplicator.instanceTransform = transformY;
 
     [xReplicator addSublayer:circleShapeLayer];
+    //将xReplicator添加到yReplicator上各自的副本偏移后就形成了一个矩阵
     [yReplicator addSublayer:xReplicator];
     [self.layer addSublayer:yReplicator];
+    /*
+    //或者
+    [yReplicator addSublayer:circleShapeLayer];
+    [xReplicator addSublayer:yReplicator];
+    [self.layer addSublayer:xReplicator];
+     */
     
     [self addAnimationToLayer:circleShapeLayer];
 }
