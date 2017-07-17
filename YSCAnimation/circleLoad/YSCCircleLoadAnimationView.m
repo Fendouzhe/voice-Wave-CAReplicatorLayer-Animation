@@ -47,13 +47,6 @@
     [self.layer addSublayer:self.circleLayer];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    [_circleLayer removeFromSuperlayer];
-    _loadingImage.layer.mask = _pathAnimationLayer;
-    
-    [self addMaskAnimation];
-}
 
 - (void)startLoading
 {
@@ -64,6 +57,14 @@
     animation.duration = 2.0;
     animation.delegate = self;
     [_circleLayer addAnimation:animation forKey:@"end"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    [_circleLayer removeFromSuperlayer];
+    _loadingImage.layer.mask = _pathAnimationLayer;
+    
+    [self addMaskAnimation];
 }
 
 - (void)addMaskAnimation
@@ -98,7 +99,7 @@
 - (CAShapeLayer *)circleLayer
 {
     if (!_circleLayer) {
-        self.circleLayer = [[CAShapeLayer alloc] init];
+        _circleLayer = [[CAShapeLayer alloc] init];
         _circleLayer.position = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
         _circleLayer.bounds = self.bounds;
         _circleLayer.backgroundColor = [UIColor grayColor].CGColor;
@@ -121,6 +122,7 @@
         self.pathAnimationLayer = [[CAShapeLayer alloc] init];
         _pathAnimationLayer.position = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
         _pathAnimationLayer.bounds = self.bounds;
+        ///透明色
         _pathAnimationLayer.backgroundColor = [UIColor clearColor].CGColor;
         CGFloat radius = 0 != _circleRadius ? _circleRadius : 50;
         UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0) radius:radius startAngle:0 endAngle:2 * M_PI clockwise:YES];

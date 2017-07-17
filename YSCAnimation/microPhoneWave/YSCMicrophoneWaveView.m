@@ -45,21 +45,7 @@
     [self setMicroPhoneTimer];
 }
 
-- (void)addMicroPhoneAnimation
-{
-    CGPoint beginPoint = _microPhoneMaskLayer.position;
-    CGFloat height = arc4random() % 48;
-    CGPoint endPoint = CGPointMake(21.5, 3 * 48 / 2 - height);
-    _microPhoneMaskLayer.position = endPoint;
-    
-    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fromValue = [NSValue valueWithCGPoint:beginPoint];
-    positionAnimation.toValue = [NSValue valueWithCGPoint:endPoint];
-    positionAnimation.duration = 0.3;
-    
-    [_microPhoneMaskLayer addAnimation:positionAnimation forKey:@""];
-}
-
+///定时
 - (void)setMicroPhoneTimer
 {
     [self closeMicroPhoneTimer];
@@ -68,6 +54,23 @@
     NSDictionary *dic = @{@"mode":[NSNumber numberWithInteger:mode]};
     _microphoneTimer = [NSTimer timerWithTimeInterval:0.3 target:self selector:@selector(addMicroPhoneAnimation) userInfo:dic repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_microphoneTimer forMode:NSDefaultRunLoopMode];
+}
+
+///模拟声音改变效果
+- (void)addMicroPhoneAnimation
+{
+    CGPoint beginPoint = _microPhoneMaskLayer.position;
+    CGFloat layerHeight = _microPhoneMaskLayer.bounds.size.height;
+    CGFloat height = arc4random() % (NSUInteger)layerHeight;
+    CGPoint endPoint = CGPointMake(_microPhoneMaskLayer.position.x, 3 * layerHeight / 2 - height);
+    _microPhoneMaskLayer.position = endPoint;
+    
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:beginPoint];
+    positionAnimation.toValue = [NSValue valueWithCGPoint:endPoint];
+    positionAnimation.duration = 0.3;
+    
+    [_microPhoneMaskLayer addAnimation:positionAnimation forKey:@""];
 }
 
 - (void)closeMicroPhoneTimer

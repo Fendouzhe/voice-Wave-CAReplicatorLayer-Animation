@@ -169,14 +169,6 @@ static CGFloat carouselSpeed = 25.0;//轮播速度 25个屏幕点单位/秒
     return label;
 }
 
-//扩大点击区域
-- (CGRect)enlargedHitRect
-{
-    return CGRectMake(self.bounds.origin.x - enlargeHitRectGap,
-                      self.bounds.origin.y - enlargeHitRectGap,
-                      self.bounds.size.width + 2 * enlargeHitRectGap,
-                      self.bounds.size.height + 2 * enlargeHitRectGap);
-}
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent*) event
 {
@@ -185,6 +177,15 @@ static CGFloat carouselSpeed = 25.0;//轮播速度 25个屏幕点单位/秒
         return [super hitTest:point withEvent:event];
     }
     return CGRectContainsPoint(rect, point) ? self : nil;
+}
+
+//扩大点击区域
+- (CGRect)enlargedHitRect
+{
+    return CGRectMake(self.bounds.origin.x - enlargeHitRectGap,
+                      self.bounds.origin.y - enlargeHitRectGap,
+                      self.bounds.size.width + 2 * enlargeHitRectGap,
+                      self.bounds.size.height + 2 * enlargeHitRectGap);
 }
 
 @end

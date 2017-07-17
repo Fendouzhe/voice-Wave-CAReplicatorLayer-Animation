@@ -55,10 +55,6 @@
 		1AED83C51D6D434A009A80CE /* maskImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83C01D6D434A009A80CE /* maskImage.png */; };
 		1AED83C61D6D434A009A80CE /* secondLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83C11D6D434A009A80CE /* secondLine.png */; };
 		1AED83CB1D6D43D4009A80CE /* YSCMicrophoneWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83CA1D6D43D4009A80CE /* YSCMicrophoneWaveView.m */; };
-		1AED83D01D6D4420009A80CE /* microPhone_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83CC1D6D4420009A80CE /* microPhone_bottom@2x.png */; };
-		1AED83D11D6D4420009A80CE /* microPhone_bottom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83CD1D6D4420009A80CE /* microPhone_bottom@3x.png */; };
-		1AED83D21D6D4420009A80CE /* microPhone_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83CE1D6D4420009A80CE /* microPhone_top@2x.png */; };
-		1AED83D31D6D4420009A80CE /* microPhone_top@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83CF1D6D4420009A80CE /* microPhone_top@3x.png */; };
 		1AED83DA1D6D4482009A80CE /* YSCVoiceLoadingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83D51D6D4482009A80CE /* YSCVoiceLoadingCircleView.m */; };
 		1AED83DB1D6D4482009A80CE /* YSCVoiceWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83D71D6D4482009A80CE /* YSCVoiceWaveView.m */; };
 		1AED83DC1D6D4482009A80CE /* YSCVolumeQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83D91D6D4482009A80CE /* YSCVolumeQueue.m */; };
@@ -825,11 +821,7 @@
 				1AED83C21D6D434A009A80CE /* circleBackground.png in Resources */,
 				1AED841C1D6EE0FC009A80CE /* music.png in Resources */,
 				1AED83EB1D6D9D10009A80CE /* SeaFragment.glsl in Resources */,
-				1AED83D21D6D4420009A80CE /* microPhone_top@2x.png in Resources */,
-				1AED83D01D6D4420009A80CE /* microPhone_bottom@2x.png in Resources */,
 				1AD5515B1DD1D1F400B3EDCD /* sw3.gif in Resources */,
-				1AED83D11D6D4420009A80CE /* microPhone_bottom@3x.png in Resources */,
-				1AED83D31D6D4420009A80CE /* microPhone_top@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
